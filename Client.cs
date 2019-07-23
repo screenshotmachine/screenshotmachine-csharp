@@ -21,13 +21,13 @@ class Client
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 
-        var apiUrl = sm.GenerateApiUrl(options);
+        string apiUrl = sm.GenerateApiUrl(options);
         //use final apiUrl where needed
-        Console.Write(apiUrl);
+        Console.WriteLine(apiUrl);
 
         //or save screenshot directly
-        var output = "output.png";
+        string output = "output.png";
         new WebClient().DownloadFile(apiUrl, output);
-        Console.Write("Screenshot saved as " + output);
+        Console.WriteLine("Screenshot saved as " + output);
     }
 }
