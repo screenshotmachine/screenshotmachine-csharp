@@ -24,8 +24,9 @@ Set other options to fulfill your needs:
     options.Add("format", "png");
     options.Add("cacheLimit", "0");
     options.Add("delay", "200");
+    options.Add("zoom", "100");
 ```
-More info about options can be found in our [API guide](https://www.screenshotmachine.com/apiguide.php).  
+More info about options can be found in our [API doc](https://www.screenshotmachine.com/api.php).  
 
  Sample code
 -----
@@ -51,6 +52,7 @@ class Client
         options.Add("format", "png");
         options.Add("cacheLimit", "0");
         options.Add("delay", "200");
+        options.Add("zoom", "100");
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 

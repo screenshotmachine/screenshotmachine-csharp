@@ -18,6 +18,7 @@ class Client
         options.Add("format", "png");
         options.Add("cacheLimit", "0");
         options.Add("delay", "200");
+        options.Add("zoom", "100");
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 
