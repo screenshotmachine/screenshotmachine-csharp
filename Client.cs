@@ -12,7 +12,7 @@ class Client
         var options = new Dictionary<string, string>();
         // mandatory parameter
         options.Add("url", "https://www.google.com");
-        // all next parameters are optional, see our API guide for more details
+        // all next parameters are optional, see our webtite screenshot API guide for more details
         options.Add("dimension", "1366x768"); // or "1366xfull" for full length screenshot
         options.Add("device", "desktop");
         options.Add("format", "png");
@@ -22,7 +22,7 @@ class Client
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 
-        string apiUrl = sm.GenerateApiUrl(options);
+        string apiUrl = sm.GenerateScreenshotApiUrl(options);
         //use final apiUrl where needed
         Console.WriteLine(apiUrl);
 

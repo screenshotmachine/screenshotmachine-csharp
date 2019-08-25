@@ -11,8 +11,8 @@ Set-up your customer key and secret phrase (if needed) in the script:
     string customerKey = "PUT_YOUR_CUSTOMER_KEY_HERE";
     string secretPhrase = ""; //leave secret phrase empty, if not needed
 ```
-
-Set other options to fulfill your needs: 
+## Website screenshot API
+Set additional options to fulfill your needs: 
 
 ```csharp
     var options = new Dictionary<string, string>();
@@ -26,10 +26,9 @@ Set other options to fulfill your needs:
     options.Add("delay", "200");
     options.Add("zoom", "100");
 ```
-More info about options can be found in our [API doc](https://www.screenshotmachine.com/api.php).  
+More info about options can be found in our [Website screenshot API](https://www.screenshotmachine.com/website-screenshot-api.php).  
 
- Sample code
------
+#### Sample code
 
 ```csharp
 using System;
@@ -46,7 +45,7 @@ class Client
         var options = new Dictionary<string, string>();
         // mandatory parameter
         options.Add("url", "https://www.google.com");
-        // all next parameters are optional, see our API guide for more details
+        // all next parameters are optional, see our webtite screenshot API guide for more details
         options.Add("dimension", "1366x768"); // or "1366xfull" for full length screenshot
         options.Add("device", "desktop");
         options.Add("format", "png");
@@ -56,7 +55,7 @@ class Client
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 
-        var apiUrl = sm.GenerateApiUrl(options);
+        var apiUrl = sm.GenerateScreenshotApiUrl(options);
         //use final apiUrl where needed
         Console.Write(apiUrl);
     }
@@ -67,7 +66,7 @@ Generated ```apiUrl```  link can be placed in ```<img>``` tag or used in your bu
 If you need to store captured screenshot as an image, just call:
 
 ```csharp
-    var apiUrl = sm.GenerateApiUrl(options);
+    var apiUrl = sm.GenerateScreenshotApiUrl(options);
 
     //or save screenshot directly
     var output = "output.png";
@@ -75,7 +74,61 @@ If you need to store captured screenshot as an image, just call:
     Console.Write("Screenshot saved as " + output);
 ```
 
-Captured screenshot will be saved as ```output.png``` file in current directory.
+Captured screenshot will be saved as ```output.png``` file in the current directory.
+
+## Website to PDF API
+
+Set the PDF options: 
+```csharp
+    var options = new Dictionary<string, string>();
+    // mandatory parameter
+    options.Add("url", "https://www.google.com");
+    // all next parameters are optional, see our website to PDF API guide for more details
+    options.Add("paper", "letter");
+    options.Add("orientation", "portrait");
+    options.Add("media", "print");
+    options.Add("bg", "nobg");
+    options.Add("delay", "2000");
+    options.Add("scale", "50");
+```
+More info about options can be found in our [Website to PDF API](https://www.screenshotmachine.com/website-to-pdf-api.php).  
+#### Sample code
+
+```csharp
+using System;
+using System.Net;
+using System.Collections.Generic;
+
+class ClientPdf
+{
+    static void Main(string[] args)
+    {
+        string customerKey = "PUT_YOUR_CUSTOMER_KEY_HERE";
+        string secretPhrase = ""; //leave secret phrase empty, if not needed
+
+        var options = new Dictionary<string, string>();
+        // mandatory parameter
+        options.Add("url", "https://www.google.com");
+        // all next parameters are optional, see our website to PDF API guide for more details
+        options.Add("paper", "letter");
+        options.Add("orientation", "portrait");
+        options.Add("media", "print");
+        options.Add("bg", "nobg");
+        options.Add("delay", "2000");
+        options.Add("scale", "50");
+
+        ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
+
+        var pdfApiUrl = sm.GeneratePdfApiUrl(options);
+
+        //save PDF file
+        var output = "output.pdf";
+        new WebClient().DownloadFile(pdfApiUrl, output);
+        Console.Write("Pdf saved as " + output);
+    }
+}  
+```
+Captured PDF will be saved as ```output.pdf``` file in the current directory.
 
 # License
 

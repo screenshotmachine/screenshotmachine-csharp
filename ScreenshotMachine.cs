@@ -9,6 +9,7 @@ class ScreenshotMachine
     private string customerKey;
     private string secretPhrase;
     private string baseApiUrl = "http://api.screenshotmachine.com/?";
+    private string basePdfApiUrl = "http://pdfapi.screenshotmachine.com/?";
 
     public ScreenshotMachine(string customerKey, string secretPhrase)
     {
@@ -16,9 +17,18 @@ class ScreenshotMachine
         this.secretPhrase = secretPhrase;
     }
 
-    public string GenerateApiUrl(Dictionary<string, string> options)
+    public string GenerateScreenshotApiUrl(Dictionary<string, string> options)
     {
-        StringBuilder apiUrl = new StringBuilder(baseApiUrl);
+        return GenerateUrl(baseApiUrl, options);
+    }
+
+    public string GeneratePdfApiUrl(Dictionary<string, string> options)
+    {
+        return GenerateUrl(basePdfApiUrl, options);
+    }
+
+    private string GenerateUrl(string baseUrl, Dictionary<string, string> options) {
+        StringBuilder apiUrl = new StringBuilder(baseUrl);
         apiUrl.Append("key=").Append(customerKey);
         if (secretPhrase != null && secretPhrase.Trim().Length > 0)
         {
