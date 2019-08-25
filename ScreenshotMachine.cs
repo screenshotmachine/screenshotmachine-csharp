@@ -8,8 +8,8 @@ class ScreenshotMachine
 
     private string customerKey;
     private string secretPhrase;
-    private string baseApiUrl = "http://api.screenshotmachine.com/?";
-    private string basePdfApiUrl = "http://pdfapi.screenshotmachine.com/?";
+    private string baseApiUrl = "https://api.screenshotmachine.com/?";
+    private string basePdfApiUrl = "https://pdfapi.screenshotmachine.com/?";
 
     public ScreenshotMachine(string customerKey, string secretPhrase)
     {
