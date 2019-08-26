@@ -55,23 +55,23 @@ class Client
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 
-        var apiUrl = sm.GenerateScreenshotApiUrl(options);
+        string apiUrl = sm.GenerateScreenshotApiUrl(options);
         //use final apiUrl where needed
-        Console.Write(apiUrl);
+        Console.WriteLine(apiUrl);
     }
-}  
+} 
 ```
 Generated ```apiUrl```  link can be placed in ```<img>``` tag or used in your business logic later.
 
 If you need to store captured screenshot as an image, just call:
 
 ```csharp
-    var apiUrl = sm.GenerateScreenshotApiUrl(options);
+    string apiUrl = sm.GenerateScreenshotApiUrl(options);
 
     //or save screenshot directly
-    var output = "output.png";
+    string output = "output.png";
     new WebClient().DownloadFile(apiUrl, output);
-    Console.Write("Screenshot saved as " + output);
+    Console.WriteLine("Screenshot saved as " + output);
 ```
 
 Captured screenshot will be saved as ```output.png``` file in the current directory.
@@ -119,14 +119,14 @@ class ClientPdf
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 
-        var pdfApiUrl = sm.GeneratePdfApiUrl(options);
+        string pdfApiUrl = sm.GeneratePdfApiUrl(options);
 
         //save PDF file
-        var output = "output.pdf";
+        string output = "output.pdf";
         new WebClient().DownloadFile(pdfApiUrl, output);
         Console.Write("Pdf saved as " + output);
     }
-}  
+}
 ```
 Captured PDF will be saved as ```output.pdf``` file in the current directory.
 

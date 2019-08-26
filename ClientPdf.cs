@@ -22,10 +22,10 @@ class ClientPdf
 
         ScreenshotMachine sm = new ScreenshotMachine(customerKey, secretPhrase);
 
-        var pdfApiUrl = sm.GeneratePdfApiUrl(options);
+        string pdfApiUrl = sm.GeneratePdfApiUrl(options);
 
         //save PDF file
-        var output = "output.pdf";
+        string output = "output.pdf";
         new WebClient().DownloadFile(pdfApiUrl, output);
         Console.Write("Pdf saved as " + output);
     }
